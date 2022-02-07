@@ -1,0 +1,53 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/pro
+    http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd
+    ">
+  <changeSet id="202202070259" author="anastasia">
+    <comment>Adding exchange_rates table</comment>
+    <createTable tableName="exchange_rates">
+      <column name="id" type="bigint">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="currency_code" type="varchar(10)">
+      </column>
+      <column name="currency_name" type="varchar(100)">
+      </column>
+      <column name="rate" type="float">
+      </column>
+      <column name="rate_date" type="date">
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet id="202202070308" author="anastasia">
+    <comment>Adding operation_history table</comment>
+    <createTable tableName="operation_history">
+      <column name="id" type="bigint">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="source_currency_id" type="bigint">
+      </column>
+      <column name="target_currency_id" type="bigint">
+      </column>
+      <column name="source_amount" type="float">
+      </column>
+      <column name="target_amount" type="float">
+      </column>
+      <column name="operation_date" type="date">
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet id="202202070321" author="anastasia">
+    <comment>Adding autoinc for ids</comment>
+    <addAutoIncrement tableName="exchange_rates" columnName="id" columnDataType="bigint"/>
+    <addAutoIncrement tableName="operation_history" columnName="id" columnDataType="bigint"/>
+  </changeSet>
+</databaseChangeLog>

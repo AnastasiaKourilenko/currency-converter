@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>История</title>
+    <link type="text/css" href="../try.css" rel="stylesheet">
+</head>
+<body>
+<div class='wrapper'>
+    <div>
+        История
+    </div>
+    <form>
+        <div>
+            <div class='horizontal-flex'>
+                <div>
+                    <input name="date" type="date" th:value = "${date}">
+                </div>
+                <div>
+                    <select id='from' name='from'>
+                        <option th:each="exchangeRate : ${exchangeRates}"
+                                th:text="${exchangeRate.getCurrencyCode()}+'('+${exchangeRate.getCurrencyName()}+')'"
+                                th:value="${exchangeRate.getCurrencyCode()}"
+                                th:selected="${exchangeRate.getCurrencyCode().equals(sourceCurrency)}">
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <select id='to' name='to'>
+                        <option
+                                th:each="exchangeRate : ${exchangeRates}"
+                                th:text="${exchangeRate.getCurrencyCode()}+'('+${exchangeRate.getCurrencyName()}+')'"
+                                th:value="${exchangeRate.getCurrencyCode()}"
+                                th:selected="${exchangeRate.getCurrencyCode().equals(targetCurrency)}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <table class='table' cols='5' border='1' bgcolor='silver'>
+                <tr>
+                    <th>Исходная валюта</th>
+                    <th>Целевая валюта</th>
+                    <th>Исходная сумма</th>
+                    <th>Получаемая сумма</th>
+                    <th>Дата</th>
+                </tr>
+                <tr th:each="exchangeOperation : ${exchangeOperations}">
+                    <td th:text="${exchangeOperation.getSourceExchangeRate.getCurrencyCode()}+'('+${exchangeOperation.getSourceExchangeRate.getCurrencyName()}+')'"></td>
+                    <td th:text="${exchangeOperation.getTargetExchangeRate.getCurrencyCode()}+'('+${exchangeOperation.getTargetExchangeRate.getCurrencyName()}+')'"></td>
+                    <td th:text="${exchangeOperation.getSourceAmount}"></td>
+                    <td th:text="${exchangeOperation.getTargetAmount}"></td>
+                    <td th:text="${exchangeOperation.getOperationDate}"></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button type='submit'>
+                Поиск
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
