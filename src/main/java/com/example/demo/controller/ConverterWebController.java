@@ -17,9 +17,9 @@ import java.util.List;
 public class ConverterWebController {
 
     @Autowired
-    CurrencyConverterService currencyConverterService;
+    private CurrencyConverterService currencyConverterService;
     @Autowired
-    OperationHistoryService operationHistoryService;
+    private OperationHistoryService operationHistoryService;
 
     @GetMapping("/converter")
     public String converter(@RequestParam(name = "from", required = false) String sourceCurrency,
@@ -43,7 +43,7 @@ public class ConverterWebController {
     @GetMapping("/history")
     public String history(@RequestParam(name = "date", required = false) String date,
                           Model model) {
-        if(date!=null) {
+        if (date != null) {
             List<ExchangeOperation> exchangeOperations = operationHistoryService.getAllExchangeOperations(LocalDate.parse(date));
             model.addAttribute("exchangeOperations", exchangeOperations);
         }

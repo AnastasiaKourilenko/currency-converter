@@ -21,9 +21,9 @@ import java.time.LocalDate;
 public class CurrencyConverterController {
 
     @Autowired
-    CurrencyConverterService currencyConverterService;
+    private CurrencyConverterService currencyConverterService;
     @Autowired
-    OperationHistoryService operationHistoryService;
+    private OperationHistoryService operationHistoryService;
 
 
     @GetMapping("/convert")

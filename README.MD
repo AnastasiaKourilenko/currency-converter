@@ -2,7 +2,7 @@
 JDK 11+, Maven, PostgreSQL
 ## Default DB config
 ```   
-schema name: cc
+DB name: cc
 username: cc
 password: cc
 ```

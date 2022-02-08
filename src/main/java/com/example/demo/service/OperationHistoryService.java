@@ -13,10 +13,10 @@ import java.util.List;
 @Service
 public class OperationHistoryService {
     @Autowired
-    ExchangeOperationRepository exchangeOperationRepository;
+    private ExchangeOperationRepository exchangeOperationRepository;
 
     @Autowired
-    ExchangeRateRepository exchangeRateRepository;
+    private ExchangeRateRepository exchangeRateRepository;
 
     public void saveOperation(String sourceCurrency, String targetCurrency, Double sourceAmount, Double targetAmount, LocalDate localDate) {
         ExchangeRate sourceExchangeRate = exchangeRateRepository.findFirstByCurrencyCodeAndDate(sourceCurrency, localDate);

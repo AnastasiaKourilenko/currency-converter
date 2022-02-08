@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.entity.ExchangeRate;
 import com.example.demo.repo.ExchangeRateRepository;
 import com.example.demo.service.DBUpdateService;
+import liquibase.pro.packaged.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,10 +16,10 @@ import java.time.LocalDate;
 public class DemoApplication {
 
     @Autowired
-    DBUpdateService dbUpdateService;
+    private DBUpdateService dbUpdateService;
 
     @Autowired
-    ExchangeRateRepository exchangeRateRepository;
+    private ExchangeRateRepository exchangeRateRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     public void doSomethingAfterStartup() {

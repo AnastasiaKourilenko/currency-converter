@@ -16,9 +16,9 @@ import java.time.LocalDate;
 public class DBUpdateService {
 
     @Autowired
-    ExchangeRateRepository exchangeRateRepository;
+    private ExchangeRateRepository exchangeRateRepository;
 
-    RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
     public void getAllRates(LocalDate localDate) {
         XmlExchangeRoot xmlExchangeRoot = restTemplate.getForObject("http://www.cbr.ru/scripts/XML_daily.asp", XmlExchangeRoot.class);

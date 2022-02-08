@@ -12,9 +12,9 @@ import java.util.List;
 public class CurrencyConverterService {
 
     @Autowired
-    ExchangeRateRepository exchangeRateRepository;
+    private ExchangeRateRepository exchangeRateRepository;
     @Autowired
-    DBUpdateService dbUpdateService;
+    private DBUpdateService dbUpdateService;
 
     public List<ExchangeRate> getAllExchangeRates() {
         return exchangeRateRepository.findByDate(exchangeRateRepository.findTopByOrderByIdDesc().getDate());

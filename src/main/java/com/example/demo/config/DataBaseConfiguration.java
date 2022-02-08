@@ -9,6 +9,8 @@ import javax.sql.DataSource;
 
 @Configuration
 public class DataBaseConfiguration {
+    @Value("${db.name}")
+    private String dbName;
     @Value("${db.schema}")
     private String dbSchema;
     @Value("${db.username}")
@@ -20,7 +22,7 @@ public class DataBaseConfiguration {
     public DataSource mysqlDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/"+dbName);
         dataSource.setSchema(dbSchema);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
