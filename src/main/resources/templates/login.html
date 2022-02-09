@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Конвертер валют</title>
@@ -10,21 +10,19 @@
     <div>
         Конвертер валют
     </div>
-    <form>
+    <form method="post">
         <div>
-            <input id='login' name='login' placeholder= 'Логин'>
+            <input id='login' name='login' placeholder='Логин'>
         </div>
         <div>
-            <input id='password' name='password' placeholder = 'Пароль'>
+            <input id='password' name='password' placeholder='Пароль'>
         </div>
         <div>
-            <button>
+            <button type="submit">
                 Войти
             </button>
         </div>
     </form>
 </div>
-
-
 </body>
 </html>

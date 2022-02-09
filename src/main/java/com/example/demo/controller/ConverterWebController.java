@@ -47,7 +47,13 @@ public class ConverterWebController {
             List<ExchangeOperation> exchangeOperations = operationHistoryService.getAllExchangeOperations(LocalDate.parse(date));
             model.addAttribute("exchangeOperations", exchangeOperations);
         }
-
         return "history";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+
 }
