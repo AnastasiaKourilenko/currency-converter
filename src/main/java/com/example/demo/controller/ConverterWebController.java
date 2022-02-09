@@ -50,10 +50,14 @@ public class ConverterWebController {
         return "history";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+    @GetMapping("/sign-in")
+    public String signIn() {
+        return "sign-in";
     }
 
+    @GetMapping("/sign-up")
+    public String signUp() {
+        return "sign-up";
+    }
 
 }

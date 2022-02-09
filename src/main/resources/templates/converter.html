@@ -1,15 +1,28 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Конвертер</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link type="text/css" href="../try.css" rel="stylesheet">
 </head>
+
 <body>
 <div class="wrapper">
-    <div>
-        Конвертер
+    <div class="head">
+        <div class="name">
+            Конвертер
+        </div>
+        <div class="login">
+            <button type="button" onclick="location.href='http://localhost:8080/sign-in';">
+                Вход
+            </button>
+            <button type="button" onclick="location.href='http://localhost:8080/sign-up';">
+                Регистрация
+            </button>
+        </div>
     </div>
+
     <form>
         <div>
             <div class="horizontal-flex">
@@ -18,8 +31,7 @@
                         <option th:each="exchangeRate : ${exchangeRates}"
                                 th:text="${exchangeRate.getCurrencyCode()}+'('+${exchangeRate.getCurrencyName()}+')'"
                                 th:value="${exchangeRate.getCurrencyCode()}"
-                                th:selected="${exchangeRate.getCurrencyCode().equals(sourceCurrency)}"
-                        ></option>
+                                th:selected="${exchangeRate.getCurrencyCode().equals(sourceCurrency)}"></option>
                     </select>
                 </div>
                 <div>
@@ -27,17 +39,16 @@
                         <option th:each="exchangeRate : ${exchangeRates}"
                                 th:text="${exchangeRate.getCurrencyCode()}+'('+${exchangeRate.getCurrencyName()}+')'"
                                 th:value="${exchangeRate.getCurrencyCode()}"
-                                th:selected="${exchangeRate.getCurrencyCode().equals(targetCurrency)}"
-                        ></option>
+                                th:selected="${exchangeRate.getCurrencyCode().equals(targetCurrency)}"></option>
                     </select>
                 </div>
             </div>
             <div class="horizontal-flex">
                 <div>
-                    <input id="amount" name="amount" th:value = "${sourceAmount}"/>
+                    <input id="amount" name="amount" th:value="${sourceAmount}"/>
                 </div>
                 <div>
-                    <input th:value = "${result}"/>
+                    <input th:value="${result}"/>
                 </div>
             </div>
         </div>
@@ -49,4 +60,5 @@
     </form>
 </div>
 </body>
+
 </html>
